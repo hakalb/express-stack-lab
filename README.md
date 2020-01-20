@@ -13,6 +13,30 @@ Create a JavaScript multi stack application using:
 
 and perhaps more...
 
+## Manage development
+
+Install dependencies.
+
+```bash
+npm i
+```
+
+Start express application.
+
+```bash
+npm start
+```
+
+> Open a browser and navigate to <http://localhost:3000>
+
+Add application debug to terminal.
+
+```bash
+DEBUG=app:* npm start
+```
+
+> You can also include more namespaces for more extended debug; e.g. app,express
+
 ## References
 
 - <https://expressjs.com/en/starter/generator.html>
