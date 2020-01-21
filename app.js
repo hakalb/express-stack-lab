@@ -37,6 +37,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// TODO: use a static link until gulp setup to copy the files
+app.use(express.static(path.join(__dirname, 'node_modules')));
 
 /**
  * Setup extension for styles and scripts inside route scripts
