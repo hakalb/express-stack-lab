@@ -3,19 +3,23 @@
 
 <head>
   <title>{{title}}</title>
+
   <!-- Material design bootstrap -->
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.11.2/css/all.css'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'>
   <link rel='stylesheet' href='/mdbootstrap/css/bootstrap.min.css'>
   <link rel='stylesheet' href='/mdbootstrap/css/mdb.min.css'>
   <link rel='stylesheet' href='/mdbootstrap/css/style.css'>
+
   <!-- Global app stles -->
   <link rel='stylesheet' href='/stylesheets/style.css' />
-  <!-- Routing styles -->
+
+  <!-- Routing specific styles -->
   {{{block 'stylesheets'}}}
 </head>
 
 <body>
+  <!-- Routing content -->
   {{{body}}}
 
   <!-- Material design bootstrap -->
@@ -23,7 +27,8 @@
   <script type='text/javascript' src='/mdbootstrap/js/popper.min.js'></script>
   <script type='text/javascript' src='/mdbootstrap/js/bootstrap.min.js'></script>
   <script type='text/javascript' src='/mdbootstrap/js/mdb.min.js'></script>
-  <!-- Routing scripts -->
+
+  <!-- Routing specific scripts -->
   {{{block 'scripts'}}}
 </body>
 

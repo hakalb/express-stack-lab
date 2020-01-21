@@ -19,6 +19,7 @@ var app = express();
  */
 
 app.set('views', path.join(__dirname, 'views'));
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
 app.set('view engine', 'hbs');
 
 /**
