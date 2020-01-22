@@ -1,35 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{{title}}</title>
 
-  <!-- Material design bootstrap -->
-  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.11.2/css/all.css'>
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'>
-  <link rel='stylesheet' href='/mdbootstrap/css/bootstrap.min.css'>
-  <link rel='stylesheet' href='/mdbootstrap/css/mdb.min.css'>
-  <link rel='stylesheet' href='/mdbootstrap/css/style.css'>
+  {{!-- Bootstrap styles --}}
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
 
-  <!-- Global app stles -->
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+  {{!-- App styles --}}
+  <link rel="stylesheet" href="/stylesheets/style.css" />
 
-  <!-- Routing specific styles -->
-  {{{block 'stylesheets'}}}
+  {{!-- Routing injected styles --}}
+  {{{block "stylesheets"}}}
 </head>
 
 <body>
-  <!-- Routing content -->
+  {{!-- Navbar partial --}}
+  {{> navbar}}
+
+  {{!-- Routing content --}}
   {{{body}}}
 
-  <!-- Material design bootstrap -->
-  <script type='text/javascript' src='/mdbootstrap/js/jquery.min.js'></script>
-  <script type='text/javascript' src='/mdbootstrap/js/popper.min.js'></script>
-  <script type='text/javascript' src='/mdbootstrap/js/bootstrap.min.js'></script>
-  <script type='text/javascript' src='/mdbootstrap/js/mdb.min.js'></script>
+  {{!-- Bootstrap scripts --}}
+  <script src="/jquery/dist/jquery.slim.min.js"></script>
+  <script src="/popper.js/dist/umd/popper.min.js"></script>
+  <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/@fortawesome/fontawesome-free/js/all.js" data-auto-replace-svg="nest"></script>
 
-  <!-- Routing specific scripts -->
-  {{{block 'scripts'}}}
+  {{!-- Global app scripts --}}
+  <script src="/javascripts/common.js"></script>
+
+  {{!-- Routing injected scripts --}}
+  {{{block "scripts"}}}
 </body>
 
 </html>

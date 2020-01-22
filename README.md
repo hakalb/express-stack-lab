@@ -17,7 +17,7 @@ Create a JavaScript multi stack application using:
 - `Handlebars` _as template engine_
 - `MongoDB` _as database_
 - `Mongoose` _as object modeling tool for MongoDB_
-- `Bootstrap Material Design` _as UI kit_
+- `Bootstrap` _as UI kit_
 
 and perhaps more...
 
@@ -47,7 +47,8 @@ DEBUG=app:* npm start
 
 ## 3. UI Design
 
-> [Bootstrap 4 tutorial guides](https://mdbootstrap.com/education/bootstrap/)
+- [Bootstrap Components](https://getbootstrap.com/docs/4.4/components)
+- [Fontawesome Icons](https://fontawesome.com/icons?d=gallery)
 
 ## 4. References
 
@@ -55,4 +56,5 @@ DEBUG=app:* npm start
 - <https://github.com/pillarjs/hbs>
 - <https://handlebarsjs.com/>
 - <https://mongoosejs.com/>
-- <https://mdbootstrap.com/docs/jquery/>
+- <https://getbootstrap.com/>
+- <https://fontawesome.com/>

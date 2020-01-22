@@ -1,0 +1,11 @@
+#wip-title {
+  font-size: 48px;
+  color: darkorange;
+}
+
+.container > hr {
+  width: 400px;
+  border-width: 2px;
+  border-color: darkorange;
+  opacity: 0.5;
+}

@@ -1,16 +1,35 @@
-html,
-body,
-header,
 #intro {
-  height: 100%;
-}
-
-#intro {
-  background: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img%20%283%29.jpg')
-    no-repeat center center fixed;
+  background: url('/images/starry-sky-998641.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  opacity: 0.2;
+  opacity: 0.95;
+}
+
+#intro-title {
+  font-size: 48px;
+  color: darkorange;
+}
+
+.container > hr {
+  width: 400px;
+  border-width: 2px;
+  border-color: darkorange;
+  opacity: 0.5;
+}
+
+.card-deck > .card {
+  border-color: darkorange;
+  border-width: 2px;
+  border-radius: 12px;
+  transition: all 0.2s ease-in-out;
+}
+.card-deck > .card:hover {
+  background-color: lavender;
+  transform: scale(1.1);
+}
+
+.card-deck > .card > .card-body > .card-text {
+  color: gray;
 }

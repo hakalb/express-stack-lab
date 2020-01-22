@@ -1,51 +1,56 @@
-<!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark pr-5">
 
-    <div class="container">
+    {{!-- App brand --}}
+    <a class="navbar-brand" href="/">
+        <i class="fas fa-layer-group"></i>
+        Express Stack</a>
 
-        <!-- Navbar brand -->
-        <a class="navbar-brand" href="/">Express Stack</a>
+    {{!-- Hidden navigation toggle --}}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <!-- Collapse button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    {{!-- Navigation --}}
+    <div id="navbar" class="collapse navbar-collapse">
+        {{!-- Left align navigation buttons --}}
+        <ul class="navbar-nav mr-auto">
+            <li id="home" class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-home"></i>
+                    Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li id="todos" class="nav-item">
+                <a class="nav-link" href="/todos">
+                    <i class="fas fa-list-alt"></i>
+                    Todos
+                </a>
+            </li>
+            <li id="about" class="nav-item">
+                <a class="nav-link" href="/about">
+                    <i class="fas fa-life-ring"></i>
+                    About
+                </a>
+            </li>
+        </ul>
 
-        <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="basicExampleNav">
-
-            <!-- Links -->
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Todos</a>
-                </li>
-
-                <!-- Dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Settings</a>
-                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">User</a>
-                    </div>
-                </li>
-
-            </ul>
-            <!-- Links -->
-
-            <form class="form-inline">
-                <div class="md-form my-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        {{!-- Right aligned settings dropdown --}}
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    {{#if loggedIn}}
+                    <a class="dropdown-item" href="/users/logout">Log out</a>
+                    {{else}}
+                    <a class="dropdown-item" href="/users/login">Log in</a>
+                    {{/if}}
                 </div>
-            </form>
-        </div>
-        <!-- Collapsible content -->
-
+            </li>
+        </ul>
     </div>
-
 </nav>
