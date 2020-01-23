@@ -1,9 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Express Stack' });
-});
+// Pages rendered from server
+router.use('/', require('./pages'));
+
+// Api endpoints
+router.use('/api', require('./api'));
 
 module.exports = router;

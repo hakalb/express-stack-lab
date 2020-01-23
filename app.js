@@ -10,11 +10,6 @@ var logger = require('morgan');
 var hbs = require('hbs');
 var compression = require('compression');
 
-var aboutRouter = require('./routes/about');
-var indexRouter = require('./routes/index');
-var todosRouter = require('./routes/todos');
-var usersRouter = require('./routes/users');
-
 var app = express();
 app.use(compression());
 
@@ -30,10 +25,7 @@ app.set('view engine', 'hbs');
  * Setup routes
  */
 
-app.use('/', indexRouter);
-app.use('/about', aboutRouter);
-app.use('/todos', todosRouter);
-app.use('/users', usersRouter);
+app.use(require('./routes/index'));
 
 /**
  * Setup the rest
