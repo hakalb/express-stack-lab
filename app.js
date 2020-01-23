@@ -8,6 +8,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs');
+var compression = require('compression');
 
 var aboutRouter = require('./routes/about');
 var indexRouter = require('./routes/index');
@@ -15,6 +16,7 @@ var todosRouter = require('./routes/todos');
 var usersRouter = require('./routes/users');
 
 var app = express();
+app.use(compression());
 
 /**
  * Setup view engine

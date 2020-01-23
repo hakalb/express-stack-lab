@@ -1,6 +1,8 @@
 {{!-- Inject index styles  --}}
 {{#extend 'stylesheets'}}
-<link rel='stylesheet' href='/stylesheets/wip.css' />
+<link rel="preload" href="/bootstrap/dist/css/bootstrap.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="/stylesheets/wip.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 {{/extend}}
 
 <div id="wip-intro" class="h-100 bg-dark">
@@ -14,7 +16,8 @@
         <div class="mt-2 mb-4 text-white-50 text-monospace">
             {{title}} page is not yet there, stay tuned
         </div>
-        <button id="wip-home" type="button" class="btn btn-outline-light mb-auto">Back to home</button>
+        <button id="wip-home" type="button" class="btn btn-outline-light mb-auto" aria-label="Home">Back to
+            home</button>
     </div>
 </div>
 

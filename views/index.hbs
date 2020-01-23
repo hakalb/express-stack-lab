@@ -1,6 +1,8 @@
 {{!-- Inject index styles  --}}
 {{#extend 'stylesheets'}}
-<link rel='stylesheet' href='/stylesheets/index.css' />
+<link rel="preload" href="/bootstrap/dist/css/bootstrap.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="/stylesheets/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 {{/extend}}
 
 {{!-- Initial screen content --}}
