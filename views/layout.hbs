@@ -6,16 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="Description" content="Lightweight multi stack powered by Express and friends">
   <title>{{title}}</title>
-  {{!-- Pre-load bootstrap style inside each page since it is not used directly in layout (performance reason) --}}
+
+  {{!-- Bootstrap --}}
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
 
   {{!-- App styles --}}
-  <link rel="preload" href="/stylesheets/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-
-  {{!-- Falback when javascript not available or inactive --}}
-  <noscript>
-    {{!-- <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css"> --}}
-    <link rel="stylesheet" href="/stylesheets/style.css">
-  </noscript>
+  <link rel="stylesheet" href="/stylesheets/style.css">
 
   {{!-- Routing injected styles --}}
   {{{block "stylesheets"}}}
@@ -29,13 +25,13 @@
   {{{body}}}
 
   {{!-- Bootstrap scripts --}}
-  <script src="/jquery/dist/jquery.slim.min.js" async></script>
-  <script src="/popper.js/dist/umd/popper.min.js" async></script>
-  <script src="/bootstrap/dist/js/bootstrap.min.js" async></script>
-  <script src="/@fortawesome/fontawesome-free/js/all.js" data-auto-replace-svg="nest" async></script>
+  <script src="/jquery/dist/jquery.slim.min.js"></script>
+  <script src="/popper.js/dist/umd/popper.min.js"></script>
+  <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/@fortawesome/fontawesome-free/js/all.js" data-auto-replace-svg="nest"></script>
 
   {{!--Global app scripts--}}
-  <script src="/javascripts/common.js" async></script>
+  <script src="/javascripts/common.js"></script>
 
   {{!-- Routing injected scripts --}}
   {{{block "scripts"}}}

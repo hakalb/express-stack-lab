@@ -7,7 +7,7 @@ document.addEventListener(
     var activeNavlink = document.querySelectorAll(
       'nav ul a[href^="/' + location.pathname.split('/')[1] + '"]'
     );
-    applog('Common', 'Active nav link', activeNavlink[0]);
+    applog('Common', `Active nav link ${activeNavlink[0]}`);
     activeNavlink[0].classList.add('active');
   },
   false
@@ -16,6 +16,6 @@ document.addEventListener(
 /**
  * Log to console
  */
-applog = (source, text) => {
+let applog = (source, text) => {
   console.log(`[${source}] ${text}`);
 };

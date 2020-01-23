@@ -1,3 +1,5 @@
+/* global applog */
+
 const todosPage = 'Todos';
 
 // Check DOM ready

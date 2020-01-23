@@ -13,7 +13,8 @@
 
 Create a JavaScript multi stack application using:
 
-- `Express` _as Node.js web framework_
+- `Node.js` _as JavaScript runtime environment_
+- `Express` _as Node.js server framework_
 - `Handlebars` _as template engine_
 - `MongoDB` _as database_
 - `Mongoose` _as object modeling tool for MongoDB_
