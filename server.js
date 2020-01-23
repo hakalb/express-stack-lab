@@ -6,6 +6,8 @@ var app = require('./app');
 var debug = require('debug')('app:server');
 var http = require('http');
 
+debug('Starting app server');
+
 /**
  * Get port from environment and store in Express.
  */

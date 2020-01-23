@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node index.js",
-    "start:watch": "nodemon index.js",
+    "start": "node server.js",
+    "start:watch": "nodemon server.js",
     "start:ui-reload": "browser-sync start --config=bs-config.js",
     "start:dev": "run-p start:watch start:ui-reload"
   },
