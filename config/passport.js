@@ -1,31 +1,92 @@
-const mongoose = require('mongoose');
 const passport = require('passport');
-const LocalStrategy = require('passport-local');
+const LocalStrategy = require('passport-local').Strategy;
+const passportJWT = require('passport-jwt');
+const bcrypt = require('bcrypt');
 
-/**
- * Setup local passport strategy for validating the user
- */
+const { JWT_SECRET } = require('./keys');
+const UserModel = require('../models/user');
 
-const Users = mongoose.model('Users');
+const JWTStrategy = passportJWT.Strategy;
+
+const cookieExtractor = req => {
+  let token = null;
+  if (req && req.cookies) token = req.cookies['jwt'];
+  console.log('Get token', token);
+  return token;
+};
 
 passport.use(
   new LocalStrategy(
     {
-      usernameField: 'user[email]',
-      passwordField: 'user[password]'
+      usernameField: 'username',
+      passwordField: 'password'
     },
-    (email, password, done) => {
-      Users.findOne({ email })
-        .then(user => {
-          if (!user || !user.validatePassword(password)) {
-            return done(null, false, {
-              errors: { 'email or password': 'is invalid' }
-            });
-          }
 
-          return done(null, user);
-        })
-        .catch(done);
+    async (username, password, done) => {
+      try {
+        // Get the user
+        const userDocument = await UserModel.findOne({
+          username: username
+        }).exec();
+
+        if (!userDocument) {
+          console.log(`User not found by username '${username}'`);
+          return done(null, null);
+        }
+
+        // Check password
+        const passwordsMatch = await bcrypt.compare(
+          password,
+          userDocument.passwordHash
+        );
+
+        if (passwordsMatch) {
+          return done(null, userDocument);
+        } else {
+          console.log(`Password hash did not match for username '${username}'`);
+          return done(null, null);
+        }
+      } catch (error) {
+        return done(error);
+      }
+    }
+  )
+);
+
+passport.use(
+  new JWTStrategy(
+    {
+      jwtFromRequest: cookieExtractor,
+      secretOrKey: JWT_SECRET
+    },
+    async (jwtPayload, done) => {
+      try {
+        // Check that the user still exists
+        if (
+          !(await UserModel.findOne({
+            username: jwtPayload.username
+          }).exec())
+        ) {
+          console.log(`User not found by username '${jwtPayload.username}'`);
+          return done(null, false);
+        }
+
+        // Check expire
+        if (Date.now() > jwtPayload.expires) {
+          console.log(
+            `jwt for username '${jwtPayload.username}' expired ${new Date(
+              jwtPayload.expires
+            ).toLocaleString()}`
+          );
+          return done(null, false);
+        }
+
+        // OK, return user
+        return done(null, jwtPayload);
+      } catch (error) {
+        console.error('JWTStrategy', error);
+        return done(error, null);
+      }
     }
   )
 );

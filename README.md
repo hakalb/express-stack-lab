@@ -5,25 +5,47 @@
 ## Content <!-- omit in toc -->
 
 - [1. Purpose of project](#1-purpose-of-project)
+  - [The main stack](#the-main-stack)
+  - [Security](#security)
+  - [Real-time notification and communication](#real-time-notification-and-communication)
+  - [Add-ons](#add-ons)
+  - [Design](#design)
 - [2. Prerequisites](#2-prerequisites)
 - [3. Manage development](#3-manage-development)
 - [4. UI Design](#4-ui-design)
 - [5. References](#5-references)
+  - [Project software](#project-software)
+  - [Inspirational articles](#inspirational-articles)
 
 ## 1. Purpose of project
 
-Create a JavaScript multi stack application using:
+Create a secure, versatile, simple multi stack application with pure JavaScript code.
+
+### The main stack
 
 - `Node.js` _as JavaScript runtime environment_
-- `Express` _as Node.js server framework_
-- `Handlebars` _as client template engine_
-- `MongoDB` _as database_
-- `Mongoose` _as object modeling tool for MongoDB_
-- `Bootstrap` _as UI kit_
-- `Passport` _as authentication tool_
-- `JWT` _as token generator_
+- `Express` _as Node.js web and server framework_
+- `MongoDB` _as document/NoSql database_
 
-and perhaps more...
+### Security
+
+- `JWT` _as stateless authentication token generator_
+- `Bcrypt` _as password hashing algoritm_
+- `Passport` _as authentication tool_
+
+### Real-time notification and communication
+
+- `socket.io` _as real-time bi-directional event based communication library between web and server (todo...)_
+- `Web Push` _as web browser notification library (todo...)_
+
+### Add-ons
+
+- `Handlebars` _as client template engine for using Express as frontend_
+- `Mongoose` _as object modeling tool for MongoDB_
+
+### Design
+
+- `Bootstrap` _as UI kit_
 
 ## 2. Prerequisites
 
@@ -66,6 +88,8 @@ DEBUG=app:* npm run start:dev
 
 ## 5. References
 
+### Project software
+
 - <https://expressjs.com/en/starter/generator.html>
 - <https://github.com/pillarjs/hbs>
 - <https://handlebarsjs.com/>
@@ -76,3 +100,8 @@ DEBUG=app:* npm run start:dev
 - <https://fontawesome.com/>
 - <http://www.passportjs.org/>
 - <https://jwt.io/>
+- <https://github.com/web-push-libs/web-push>
+
+### Inspirational articles
+
+- [Sessionless authentication in Express with JWT and Passport](https://blog.usejournal.com/sessionless-authentication-withe-jwts-with-node-express-passport-js-69b059e4b22c)

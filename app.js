@@ -53,7 +53,7 @@ mongoose
     console.groupEnd();
   });
 // Models
-require('./models/users');
+require('./models/user');
 // Passport validation strategy
 require('./config/passport');
 
