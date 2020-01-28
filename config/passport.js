@@ -8,13 +8,9 @@ const UserModel = require('../models/user');
 
 const JWTStrategy = passportJWT.Strategy;
 
-const cookieExtractor = req => {
-  let token = null;
-  if (req && req.cookies) token = req.cookies['jwt'];
-  console.log('Get token', token);
-  return token;
-};
-
+/**
+ * Local strategy, used when validating login requests.
+ */
 passport.use(
   new LocalStrategy(
     {
@@ -53,39 +49,35 @@ passport.use(
   )
 );
 
+/**
+ * JWT cookie strategy, used when granting access to protected endpoints.
+
+ * Note! 
+ * Use encapsulated version instead, which is found in middleware/authorize.js.
+ */
 passport.use(
   new JWTStrategy(
     {
-      jwtFromRequest: cookieExtractor,
+      jwtFromRequest: req => req.cookies && req.cookies['jwt'],
       secretOrKey: JWT_SECRET
     },
     async (jwtPayload, done) => {
       try {
-        // Check that the user still exists
-        if (
-          !(await UserModel.findOne({
-            username: jwtPayload.username
-          }).exec())
-        ) {
-          console.log(`User not found by username '${jwtPayload.username}'`);
-          return done(null, false);
-        }
-
         // Check expire
         if (Date.now() > jwtPayload.expires) {
-          console.log(
+          return done(
+            null,
+            false,
             `jwt for username '${jwtPayload.username}' expired ${new Date(
               jwtPayload.expires
             ).toLocaleString()}`
           );
-          return done(null, false);
         }
 
         // OK, return user
-        return done(null, jwtPayload);
+        return done(null, jwtPayload, null);
       } catch (error) {
-        console.error('JWTStrategy', error);
-        return done(error, null);
+        return done(error, null, null);
       }
     }
   )

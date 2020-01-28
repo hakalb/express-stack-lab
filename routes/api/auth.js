@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const keys = require('../../config/keys');
 const UserModel = require('../../models/user');
+const authorize = require('../../middleware/authorize');
 
 const router = express.Router();
 
@@ -95,19 +96,15 @@ router.put('/logout', (req, res) => {
 /**
  * GET: Test protected endpoint
  */
-router.get(
-  '/protected',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    const { user } = req;
+router.get('/protected', authorize, (req, res) => {
+  const { user } = req;
 
-    return res.status(200).send(
-      Object.assign({}, user, {
-        // TODO replcae with spread operator when allowed
-        expiresAsLocal: new Date(user.expires).toLocaleString()
-      })
-    );
-  }
-);
+  return res.status(200).send(
+    Object.assign({}, user, {
+      // TODO replcae with spread operator when allowed
+      expiresAsLocal: new Date(user.expires).toLocaleString()
+    })
+  );
+});
 
 module.exports = router;

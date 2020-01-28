@@ -10,8 +10,9 @@ var logger = require('morgan');
 var hbs = require('hbs');
 var compression = require('compression');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
-const isProd = process.env.NODE_ENV === 'production';
+const keys = require('./config/keys');
 
 var app = express();
 
@@ -35,23 +36,28 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 // TODO: use a static link until gulp setup to copy the files
 app.use(express.static(path.join(__dirname, 'node_modules')));
+app.use(passport.initialize());
 
 /**
  * Setup and connect to Mongoose database
  */
 mongoose.promise = global.Promise;
-mongoose.set('debug', !isProd);
-mongoose
-  .connect('mongodb://127.0.0.1/express-stack', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => console.log('Mongoose connected'))
-  .catch(err => {
-    console.groupCollapsed('Mongoose connection failed');
-    console.error(err);
-    console.groupEnd();
-  });
+mongoose.set('debug', keys.MONGOOSE_DEBUG);
+mongoose.connect(keys.MONGOOSE_URI, {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+mongoose.connection.on('connected', () =>
+  console.log(`[mongo] connected to ${keys.MONGOOSE_URI}`)
+);
+mongoose.connection.on('disconnected', () =>
+  console.log(`[mongo] disconnected from ${keys.MONGOOSE_URI}`)
+);
+mongoose.connection.on('error', err =>
+  console.error(`[mongo] ${err.name}`, err.message)
+);
+
 // Models
 require('./models/user');
 // Passport validation strategy
