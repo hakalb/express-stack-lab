@@ -2,7 +2,6 @@ import passportLocal from 'passport-local';
 import passportJWT from 'passport-jwt';
 import bcrypt from 'bcrypt';
 
-import keys from './keys';
 import { UserModel } from '../models/user';
 
 const LocalStrategy = passportLocal.Strategy;
@@ -56,7 +55,7 @@ export const localPassportStrategy = new LocalStrategy(
 export const jwtPassportStrategy = new JWTStrategy(
   {
     jwtFromRequest: req => req.cookies && req.cookies['jwt'],
-    secretOrKey: keys.JWT_SECRET
+    secretOrKey: process.env.JWT_SECRET
   },
   async (jwtPayload, done) => {
     try {

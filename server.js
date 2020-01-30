@@ -1,7 +1,6 @@
 /**
  * Module dependencies.
  */
-
 import debugLib from 'debug';
 import http from 'http';
 

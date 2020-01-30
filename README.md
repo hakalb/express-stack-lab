@@ -16,9 +16,10 @@
 - [3. How do I start](#3-how-do-i-start)
   - [3.1 Clone the project](#31-clone-the-project)
   - [3.2 Start MongoDB as background process (local installation only)](#32-start-mongodb-as-background-process-local-installation-only)
-  - [3.3. Start development](#33-start-development)
-  - [3.4 Build production](#34-build-production)
-  - [3.5 Start production](#35-start-production)
+  - [3.3 Setup environment variables](#33-setup-environment-variables)
+  - [3.4 Start development](#34-start-development)
+  - [3.5 Build production](#35-build-production)
+  - [3.6 Start production](#36-start-production)
 - [4. UI Design](#4-ui-design)
 - [5. References](#5-references)
   - [Project software](#project-software)
@@ -66,6 +67,7 @@
 - `cssnano` _as CSS compression tool powered by PostCSS_
 - `Nodemon` _as live reload tool for node server (dev)_
 - `Browsersync` _as live reload tool for browser (dev)_
+- `dotenv-safe` _as environment provider_
   
 ## 2. Prerequisites
 
@@ -94,7 +96,17 @@ npm i
 mongod --config /usr/local/etc/mongod.conf --fork
 ```
 
-### 3.3. Start development
+### 3.3 Setup environment variables
+
+Create an environment file from the provided example och edit with your settings.
+
+```bash
+cp .env.example .env
+```
+
+> Note! `.env` should be kept secret and not shared with anyone not trusted.
+
+### 3.4 Start development
 
 ```bash
 npm run dev
@@ -110,13 +122,13 @@ DEBUG=app:* npm run dev
 
 You can also include more namespaces for more extended debug; e.g. `app,express`.
 
-### 3.4 Build production
+### 3.5 Build production
 
 ```bash
 npm run build
 ```
 
-### 3.5 Start production
+### 3.6 Start production
 
 ```bash
 npm run server:prod
@@ -150,6 +162,7 @@ npm run prod
 - <http://www.passportjs.org/>
 - <https://jwt.io/>
 - <https://github.com/web-push-libs/web-push>
+- <https://github.com/rolodato/dotenv-safe>
 
 ### Inspirational articles
 

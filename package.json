@@ -5,8 +5,8 @@
   "scripts": {
     "start": "npm run prod",
     "browser": "browser-sync start --config=bs-config.js",
-    "server": "nodemon --exec babel-node ./server",
-    "server:prod": "node ./dist/server",
+    "server": "nodemon --exec babel-node -r ./node_modules/dotenv-safe/config ./server",
+    "server:prod": "node -r dotenv-safe/config ./dist/server",
     "dev": "NODE_ENV=development run-p server browser",
     "build": "webpack --mode production",
     "prod": "NODE_ENV=production npm-run-all build server:prod",
@@ -21,6 +21,7 @@
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv-safe": "^8.2.0",
     "express": "~4.16.1",
     "express-handlebars": "^3.1.0",
     "express-jwt": "^5.3.1",

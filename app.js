@@ -12,7 +12,6 @@ import compression from 'compression';
 import mongoose from 'mongoose';
 import passport from 'passport';
 
-import keys from './config/keys';
 import { jwtPassportStrategy, localPassportStrategy } from './config/passport';
 import * as routeApi from './routes/api';
 import * as routePage from './routes/pages';
@@ -76,17 +75,17 @@ app.use(passport.initialize());
  * Setup and connect to Mongoose database
  */
 mongoose.promise = global.Promise;
-mongoose.set('debug', keys.MONGOOSE_DEBUG);
-mongoose.connect(keys.MONGOOSE_URI, {
+mongoose.set('debug', process.env.MONGOOSE_DEBUG);
+mongoose.connect(process.env.MONGOOSE_URI, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 mongoose.connection.on('connected', () =>
-  console.log(`[mongo] connected to ${keys.MONGOOSE_URI}`)
+  console.log(`[mongo] connected to ${process.env.MONGOOSE_URI}`)
 );
 mongoose.connection.on('disconnected', () =>
-  console.log(`[mongo] disconnected from ${keys.MONGOOSE_URI}`)
+  console.log(`[mongo] disconnected from ${process.env.MONGOOSE_URI}`)
 );
 mongoose.connection.on('error', err =>
   console.error(`[mongo] ${err.name}`, err.message)

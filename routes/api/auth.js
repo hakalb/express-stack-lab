@@ -3,7 +3,6 @@ import passport from 'passport';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-import keys from '../../config/keys';
 import { UserModel } from '../../models/user';
 import { authorize } from '../../middleware/authorize';
 
@@ -61,7 +60,7 @@ router.post('/login', (req, res) => {
     // Create jwt payload content which ends up in the cookie
     const payload = {
       username: user.username,
-      expires: Date.now() + parseInt(keys.JWT_EXPIRE_IN_SECONDS) * 1000
+      expires: Date.now() + parseInt(process.env.JWT_EXPIRE_IN_SECONDS) * 1000
     };
 
     // This will assign payload to req.user
@@ -71,12 +70,12 @@ router.post('/login', (req, res) => {
       }
 
       // Generate a signed json web token and return it in the response
-      const token = jwt.sign(JSON.stringify(payload), keys.JWT_SECRET);
+      const token = jwt.sign(JSON.stringify(payload), process.env.JWT_SECRET);
 
       // Assign our jwt token to the cookie
       res.cookie('jwt', token, {
         httpOnly: true,
-        secure: keys.COOKIE_HTTPS_SECURE // TODO support for HTTPS
+        secure: process.env.COOKIE_HTTPS_SECURE // TODO support for HTTPS
       });
       const username = payload.username;
       return res.status(200).send({ username });
