@@ -1,5 +1,6 @@
 #intro {
-  background: url('/images/starry-sky-998641.jpg') no-repeat center center fixed;
+  background: url('/assets/images/starry-sky-998641.jpg') no-repeat center
+    center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

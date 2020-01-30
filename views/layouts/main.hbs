@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="Description" content="Lightweight multi stack powered by Express and friends">
+  <title>{{title}}</title>
+
+  {{!-- Bootstrap --}}
+  <link rel="stylesheet" href="/assets/vendors/bootstrap/dist/css/bootstrap.min.css">
+
+  {{!-- App styles --}}
+  <link rel="stylesheet" href="/assets/styles/style.css">
+
+  {{!-- View injected head content --}}
+  {{{_sections.head}}}
+</head>
+
+<body>
+  {{!-- Navbar partial --}}
+  {{> navbar}}
+
+  {{!-- Routing content --}}
+  {{{body}}}
+
+  {{!-- Bootstrap scripts --}}
+  <script src="/assets/vendors/jquery/dist/jquery.slim.min.js"></script>
+  <script src="/assets/vendors/popper.js/dist/umd/popper.min.js"></script>
+  <script src="/assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/assets/vendors/@fortawesome/fontawesome-free/js/all.min.js" data-auto-replace-svg="nest"></script>
+
+  {{!-- Global app scripts --}}
+  <script src="/assets/scripts/global.js"></script>
+
+  {{!-- View injected scripts --}}
+  {{{_sections.scripts}}}
+</body>
+
+</html>

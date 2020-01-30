@@ -1,7 +1,7 @@
 {{!-- Inject index styles  --}}
-{{#extend 'stylesheets'}}
-<link rel="stylesheet" href="/stylesheets/wip.css">
-{{/extend}}
+{{#section "head"}}
+<link rel="stylesheet" href="/assets/styles/wip.css">
+{{/section}}
 
 <div id="wip-intro" class="h-100 bg-dark">
     {{!-- Center of screen --}}
@@ -19,6 +19,6 @@
     </div>
 </div>
 
-{{#extend 'scripts'}}
-<script src='/javascripts/wip.js'></script>
-{{/extend}}
+{{#section "scripts"}}
+<script src='/assets/scripts/wip.js'></script>
+{{/section}}

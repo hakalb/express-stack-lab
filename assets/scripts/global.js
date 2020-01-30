@@ -1,3 +1,5 @@
+import { applog } from './log';
+
 /**
  * Set active navigation based on location
  */
@@ -12,10 +14,3 @@ document.addEventListener(
   },
   false
 );
-
-/**
- * Log to console
- */
-let applog = (source, text) => {
-  console.log(`[${source}] ${text}`);
-};

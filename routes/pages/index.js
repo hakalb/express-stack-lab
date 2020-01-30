@@ -1,8 +1,5 @@
-const express = require('express');
-const router = express.Router();
+import about from './about';
+import home from './home';
+import todos from './todos';
 
-router.use('/', require('./home'));
-router.use('/about', require('./about'));
-router.use('/todos', require('./todos'));
-
-module.exports = router;
+export { about, home, todos };

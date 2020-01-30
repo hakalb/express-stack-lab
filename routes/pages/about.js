@@ -1,5 +1,6 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express';
+
+const router = express.Router();
 
 /**
  * GET: About
@@ -8,4 +9,4 @@ router.get('/', function(req, res) {
   res.render('about', { title: 'About' });
 });
 
-module.exports = router;
+export default router;

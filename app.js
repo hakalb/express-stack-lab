@@ -2,26 +2,58 @@
  * App setup
  */
 
-var express = require('express');
-var path = require('path');
-const bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var hbs = require('hbs');
-var compression = require('compression');
-const mongoose = require('mongoose');
-const passport = require('passport');
+import express from 'express';
+import path from 'path';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import exphbs from 'express-handlebars';
+import compression from 'compression';
+import mongoose from 'mongoose';
+import passport from 'passport';
 
-const keys = require('./config/keys');
+import keys from './config/keys';
+import { jwtPassportStrategy, localPassportStrategy } from './config/passport';
+import * as routeApi from './routes/api';
+import * as routePage from './routes/pages';
+//import { section } from './views/helpers/section';
 
-var app = express();
+const app = express();
 
 /**
  * Setup view engine
  */
 
+const hbs = exphbs.create({
+  defaultLayout: 'main',
+  extname: 'hbs',
+  helpers: {
+    /**
+     * Add tailor made sections, like in Razor, to pre-defined parts of the layouts.
+     * @example
+     * // Add a stylesheet to layout header
+     * {{#section "head"}}
+     *   <link rel="stylesheet" href="view-stylesheets.css">
+     * {{/section}}
+     *
+     * // Add a script to layout end
+     * {{#section "scripts"}}
+     *   <script scr="view-script.js">
+     * {{/section}}
+     */
+    section: function(name, options) {
+      // Init all sections
+      if (!this._sections) this._sections = {};
+      // Init current section
+      if (!this._sections[name]) this._sections[name] = '';
+      // Append new content as new row
+      this._sections[name] += `${options.fn(this)}\n`;
+      return null;
+    }
+  }
+});
 app.set('views', path.join(__dirname, 'views'));
-hbs.registerPartials(path.join(__dirname, 'views/partials'));
+app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
 /**
@@ -33,9 +65,11 @@ app.use(cookieParser());
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
-// TODO: use a static link until gulp setup to copy the files
-app.use(express.static(path.join(__dirname, 'node_modules')));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use(
+  '/assets/vendors',
+  express.static(path.join(__dirname, 'node_modules'))
+);
 app.use(passport.initialize());
 
 /**
@@ -58,16 +92,18 @@ mongoose.connection.on('error', err =>
   console.error(`[mongo] ${err.name}`, err.message)
 );
 
-// Models
-require('./models/user');
-// Passport validation strategy
-require('./config/passport');
+// Passport validation strategies
+passport.use(localPassportStrategy);
+passport.use(jwtPassportStrategy);
 
 /**
  * Setup routes
  */
 
-app.use(require('./routes/index'));
+app.use('', routePage.home);
+app.use('/about', routePage.about);
+app.use('/todos', routePage.todos);
+app.use('/api/auth', routeApi.auth);
 
 /**
  * Setup error handlers
@@ -75,28 +111,6 @@ app.use(require('./routes/index'));
 app.use(logErrors);
 app.use(apiErrorHandler);
 app.use(catchAllErrorHandler);
-
-/**
- * Setup extension for styles and scripts inside route scripts
- */
-var blocks = {};
-
-hbs.registerHelper('extend', function(name, context) {
-  var block = blocks[name];
-  if (!block) {
-    block = blocks[name] = [];
-  }
-
-  block.push(context.fn(this)); // for older versions of handlebars, use block.push(context(this));
-});
-
-hbs.registerHelper('block', function(name) {
-  var val = (blocks[name] || []).join('\n');
-
-  // clear the block
-  blocks[name] = [];
-  return val;
-});
 
 /**
  * Log error handler
@@ -137,4 +151,4 @@ function catchAllErrorHandler(err, req, res, next) {
   });
 }
 
-module.exports = app;
+export default app;

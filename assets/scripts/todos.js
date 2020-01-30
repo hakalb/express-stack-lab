@@ -1,4 +1,4 @@
-/* global applog */
+import { applog } from './log';
 
 const todosPage = 'Todos';
 

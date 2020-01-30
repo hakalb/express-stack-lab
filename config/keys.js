@@ -11,4 +11,4 @@ const keys = {
 
 // TODO move to runtime environment variables
 
-module.exports = keys;
+export default keys;

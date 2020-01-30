@@ -1,4 +1,4 @@
-const passport = require('passport');
+import passport from 'passport';
 
 /**
  * Encapsulate passport.authenticate for easier use in api endpoints.
@@ -13,7 +13,7 @@ const passport = require('passport');
  *   return res.status(<code>).send(<object>);
  * });
  */
-const authorize = (req, res, next) => {
+export const authorize = (req, res, next) => {
   passport.authenticate('jwt', { session: false }, (err, user, info) => {
     // Response 500 when error found
     if (err) {
@@ -35,4 +35,3 @@ const authorize = (req, res, next) => {
     return next();
   })(req, res, next);
 };
-module.exports = authorize;

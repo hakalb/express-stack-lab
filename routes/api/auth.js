@@ -1,11 +1,11 @@
-const express = require('express');
-const passport = require('passport');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import express from 'express';
+import passport from 'passport';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
-const keys = require('../../config/keys');
-const UserModel = require('../../models/user');
-const authorize = require('../../middleware/authorize');
+import keys from '../../config/keys';
+import { UserModel } from '../../models/user';
+import { authorize } from '../../middleware/authorize';
 
 const router = express.Router();
 
@@ -107,4 +107,4 @@ router.get('/protected', authorize, (req, res) => {
   );
 });
 
-module.exports = router;
+export default router;

@@ -2,9 +2,12 @@
  * Module dependencies.
  */
 
-var app = require('./app');
-var debug = require('debug')('app:server');
-var http = require('http');
+import debugLib from 'debug';
+import http from 'http';
+
+import app from './app';
+
+const debug = debugLib('app:server');
 
 debug('Starting app server');
 
