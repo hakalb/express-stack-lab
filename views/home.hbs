@@ -4,25 +4,26 @@
 {{/section}}
 
 {{!-- Initial screen content --}}
-<header id="intro" class="bg-dark" style="height: 600px;">
-    {{!-- Center of screen --}}
-    <div class="container h-75 d-flex flex-column align-items-center">
-        <div id="intro-title" class="text-monospace text-uppercase mt-auto">
-            <i class="fas fa-layer-group"></i>
-            {{title}}
-        </div>
-        <hr />
-        <div class="mt-2 mb-auto text-white-50 text-monospace">
-            Lightweight multi stack powered by Express and friends
+<header id="intro" class="bg-dark h-100">
+    <div class="container d-flex flex-column h-100">
+        <div class="jumbotron my-auto text-center">
+            <h1 id="intro-title" class="display-4 text-monospace text-uppercase"><i class="fas fa-layer-group"></i>
+                {{title}}
+            </h1>
+            <p class="lead text-monospace mt-3">Lightweight multi stack powered by Express and friends</p>
+            <hr class="mt-4 mb-5">
+            <a id="intro-friends-btn" class="btn btn-outline-secondary" href="#cards" role="button"><i
+                    class="fas fa-user-astronaut"></i>Visit
+                my friends</a>
         </div>
     </div>
 </header>
 
 {{!-- Content displayed next after header --}}
 <main>
-    <div class="container pt-5">
+    <div class="container py-5">
         <div class="row justify-content-around">
-            <div class="card-deck">
+            <div id="cards" class="card-deck">
                 <div class="card text-center" style="width: 15rem;">
                     <div class="card-body">
                         <i class="fas fa-server fa-4x text-secondary"></i>

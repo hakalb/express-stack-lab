@@ -166,6 +166,8 @@ npm run prod
 - [Bootstrap Components](https://getbootstrap.com/docs/4.4/components)
 - [Fontawesome Icons](https://fontawesome.com/icons?d=gallery)
 
+Fontawesome is installed to use SVG icons together with jQuery. This will [enable event binding and other DOM manipulations](https://fontawesome.com/how-to-use/on-the-web/using-with/jquery).
+
 ## 6. References
 
 ### Project software

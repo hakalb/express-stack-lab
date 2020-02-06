@@ -125,7 +125,7 @@ module.exports = {
     new CopyWebpackPlugin(
       [
         {
-          from: '**/jquery.slim.min.*',
+          from: '**/jquery.min.*',
           to: 'assets/vendors/jquery/[path]/[name].[ext]',
           ignore: ['*.map']
         }
