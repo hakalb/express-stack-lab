@@ -42,6 +42,7 @@
 - `JWT` _as stateless authentication token generator_
 - `Bcrypt` _as password hashing algoritm_
 - `Passport` _as authentication tool_
+- `Helmet` _as protection to well-known web vulnerabilities by setting HTTP headers appropriately_
 
 ### Real-time notification and communication
 
@@ -68,6 +69,7 @@
 - `cssnano` _as CSS compression tool powered by PostCSS_
 - `Nodemon` _as live reload tool for node server (dev)_
 - `Browsersync` _as live reload tool for browser (dev)_
+- `cors` _as cross-origin resource sharing enabler_
 - `dotenv-safe` _as environment provider_
   
 ## 2. Server application structure
