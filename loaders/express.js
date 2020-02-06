@@ -4,6 +4,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import exphbs from 'express-handlebars';
 import express from 'express';
+import helmet from 'helmet';
 import logger from 'morgan';
 import passport from 'passport';
 import path from 'path';
@@ -67,6 +68,9 @@ export default async app => {
 
   // Enable Cross Origin Resource Sharing to all origins by default
   app.use(cors());
+
+  // Enable protection to well-known web vulnerabilities by setting HTTP headers appropriately
+  app.use(helmet());
 
   // HTTP request logger
   app.use(logger(config.node.IS_PROD ? 'tiny' : 'dev'));
