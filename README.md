@@ -12,19 +12,20 @@
   - [Database tools](#database-tools)
   - [Design](#design)
   - [Serve, build and deploy](#serve-build-and-deploy)
-- [2. Prerequisites](#2-prerequisites)
-- [3. How do I start](#3-how-do-i-start)
-  - [3.1 Clone the project](#31-clone-the-project)
-  - [3.2 Start MongoDB as background process (local installation only)](#32-start-mongodb-as-background-process-local-installation-only)
-  - [3.3 Setup environment variables](#33-setup-environment-variables)
-  - [3.4 Start development](#34-start-development)
-  - [3.5 Build production](#35-build-production)
-  - [3.6 Start production](#36-start-production)
-- [4. UI Design](#4-ui-design)
-- [5. References](#5-references)
+- [2. Server application structure](#2-server-application-structure)
+- [3. Prerequisites](#3-prerequisites)
+- [4. How do I start](#4-how-do-i-start)
+  - [4.1 Clone the project](#41-clone-the-project)
+  - [4.2 Start MongoDB as background process (local installation only)](#42-start-mongodb-as-background-process-local-installation-only)
+  - [4.3 Setup environment variables](#43-setup-environment-variables)
+  - [4.4 Start development](#44-start-development)
+  - [4.5 Build production](#45-build-production)
+  - [4.6 Start production](#46-start-production)
+- [5. UI Design](#5-ui-design)
+- [6. References](#6-references)
   - [Project software](#project-software)
   - [Inspirational articles](#inspirational-articles)
-- [6. Present simplifications and future improvements](#6-present-simplifications-and-future-improvements)
+- [7. Present simplifications and future improvements](#7-present-simplifications-and-future-improvements)
 
 ## 1. Purpose of project
 
@@ -33,7 +34,7 @@
 ### The main stack
 
 - `Node.js` _as JavaScript runtime environment_
-- `Express` _as Node.js web and server framework_
+- `Express` _as Node.js server framework_
 - `MongoDB` _as document/NoSql database_
 
 ### Security
@@ -49,7 +50,7 @@
 
 ### Template engine
 
-- `Handlebars` _as client template engine for using Express as frontend_
+- `Handlebars` _as client template engine for using Express with server side rendering_
 
 ### Database tools
 
@@ -69,15 +70,31 @@
 - `Browsersync` _as live reload tool for browser (dev)_
 - `dotenv-safe` _as environment provider_
   
-## 2. Prerequisites
+## 2. Server application structure
+
+Description of the most important parts of the structure.
+
+```bash
+├── api             # Express route controllers for all endpoints
+├── assets          # Static assets for server side rendered pages
+├── config          # Configuration including environment variables
+├── loaders         # Express startup process split into specific modules
+├── models          # Moongoose database models
+├── services        # Business logic services
+└── views           # Handlebars templates used by server side redering
+.env                # Environment variables
+server.js           # Server entry point
+```
+
+## 3. Prerequisites
 
 Install `Node.js` (version 12). `MongoDB` could be installed locally on your development machine or e.g. provided by MongoDB Atlas in the cloud.
 
 All other packages are installed isolated inside the project.
 
-## 3. How do I start
+## 4. How do I start
 
-### 3.1 Clone the project
+### 4.1 Clone the project
 
 ```bash
 cd to-your-working-folder
@@ -90,13 +107,13 @@ Install project dependencies to `node_modules`.
 npm i
 ```
 
-### 3.2 Start MongoDB as background process (local installation only)
+### 4.2 Start MongoDB as background process (local installation only)
 
 ```bash
 mongod --config /usr/local/etc/mongod.conf --fork
 ```
 
-### 3.3 Setup environment variables
+### 4.3 Setup environment variables
 
 Create an environment file from the provided example och edit with your settings.
 
@@ -106,7 +123,7 @@ cp .env.example .env
 
 > Note! `.env` should be kept secret and not shared with anyone not trusted.
 
-### 3.4 Start development
+### 4.4 Start development
 
 ```bash
 npm run dev
@@ -122,13 +139,13 @@ DEBUG=app:* npm run dev
 
 You can also include more namespaces for more extended debug; e.g. `app,express`.
 
-### 3.5 Build production
+### 4.5 Build production
 
 ```bash
 npm run build
 ```
 
-### 3.6 Start production
+### 4.6 Start production
 
 ```bash
 npm run server:prod
@@ -142,12 +159,12 @@ Or build for production and start at once.
 npm run prod
 ```
 
-## 4. UI Design
+## 5. UI Design
 
 - [Bootstrap Components](https://getbootstrap.com/docs/4.4/components)
 - [Fontawesome Icons](https://fontawesome.com/icons?d=gallery)
 
-## 5. References
+## 6. References
 
 ### Project software
 
@@ -168,6 +185,6 @@ npm run prod
 
 - [Sessionless authentication in Express with JWT and Passport](https://blog.usejournal.com/sessionless-authentication-withe-jwts-with-node-express-passport-js-69b059e4b22c)
 
-## 6. Present simplifications and future improvements
+## 7. Present simplifications and future improvements
 
 _Todo..._
