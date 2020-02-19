@@ -26,6 +26,8 @@
   - [Project software](#project-software)
   - [Inspirational articles](#inspirational-articles)
 - [7. Present simplifications and future improvements](#7-present-simplifications-and-future-improvements)
+  - [7.1 Urgent todos](#71-urgent-todos)
+  - [7.2 Future](#72-future)
 
 ## 1. Purpose of project
 
@@ -52,6 +54,8 @@
 ### Template engine
 
 - `Handlebars` _as client template engine for using Express with server side rendering_
+
+> Note! To be deprecated in favour of pure html.
 
 ### Database tools
 
@@ -190,6 +194,14 @@ Fontawesome is installed to use SVG icons together with jQuery. This will [enabl
 - [Sessionless authentication in Express with JWT and Passport](https://blog.usejournal.com/sessionless-authentication-withe-jwts-with-node-express-passport-js-69b059e4b22c)
 
 ## 7. Present simplifications and future improvements
+
+### 7.1 Urgent todos
+
+- Replace Handlebars with pure html files to be able to use ES6 everywhere and to get better builds
+- Use `webpack-dev-server` instead of `nodemon` and `babel-node` (same as above)
+- Use `Axios` for REST-api calls to complete the login process
+
+### 7.2 Future
 
 - Remove jQuery dependency
 - ...
