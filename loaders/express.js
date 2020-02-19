@@ -37,31 +37,7 @@ export default async app => {
    */
   const hbs = exphbs.create({
     defaultLayout: 'main',
-    extname: 'hbs',
-    helpers: {
-      /**
-       * Add tailor made sections, like in Razor, to pre-defined parts of the layouts.
-       * @example
-       * // Add a stylesheet to layout header
-       * {{#section "head"}}
-       *   <link rel="stylesheet" href="view-stylesheets.css">
-       * {{/section}}
-       *
-       * // Add a script to layout end
-       * {{#section "scripts"}}
-       *   <script scr="view-script.js">
-       * {{/section}}
-       */
-      section: function(name, options) {
-        // Init all sections
-        if (!this._sections) this._sections = {};
-        // Init current section
-        if (!this._sections[name]) this._sections[name] = '';
-        // Append new content as new row
-        this._sections[name] += `${options.fn(this)}\n`;
-        return null;
-      }
-    }
+    extname: 'hbs'
   });
   app.engine('hbs', hbs.engine);
   app.set('view engine', 'hbs');

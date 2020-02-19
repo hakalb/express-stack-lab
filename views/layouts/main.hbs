@@ -11,13 +11,10 @@
   <link rel="stylesheet" href="/assets/vendors/bootstrap/dist/css/bootstrap.min.css">
 
   {{!-- App styles --}}
-  <link rel="stylesheet" href="/assets/styles/style.css">
-
-  {{!-- View injected head content --}}
-  {{{_sections.head}}}
+  <link rel="stylesheet" href="/assets/styles/hbs.css">
 </head>
 
-<body>
+<body class="bg-dark">
   {{!-- Navbar partial --}}
   {{> navbar}}
 
@@ -31,10 +28,7 @@
   <script src="/assets/vendors/@fortawesome/fontawesome-free/js/all.min.js" data-auto-replace-svg="nest"></script>
 
   {{!-- Global app scripts --}}
-  <script src="/assets/scripts/global.js"></script>
-
-  {{!-- View injected scripts --}}
-  {{{_sections.scripts}}}
+  <script src="/assets/scripts/hbs.js"></script>
 </body>
 
 {{!-- Dynamic tack to top button --}}

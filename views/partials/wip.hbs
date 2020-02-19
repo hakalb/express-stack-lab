@@ -1,11 +1,6 @@
-{{!-- Inject index styles  --}}
-{{#section "head"}}
-<link rel="stylesheet" href="/assets/styles/wip.css">
-{{/section}}
-
 <div id="wip-intro" class="h-100 bg-dark">
     {{!-- Center of screen --}}
-    <div class="container h-75 d-flex flex-column align-items-center">
+    <div id="wip-container" class="container h-75 d-flex flex-column align-items-center">
         <div id="wip-title" class="text-monospace text-uppercase mt-auto">
             <i class="fas fa-umbrella-beach"></i>
             Work in progress...
@@ -18,7 +13,3 @@
             home</button>
     </div>
 </div>
-
-{{#section "scripts"}}
-<script src='/assets/scripts/wip.js'></script>
-{{/section}}

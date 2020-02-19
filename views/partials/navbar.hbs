@@ -1,8 +1,3 @@
-{{!-- Inject index styles  --}}
-{{#section "head"}}
-<link rel="stylesheet" href="/assets/styles/navbar.css">
-{{/section}}
-
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark pr-5">
 
     {{!-- App brand --}}
@@ -27,12 +22,6 @@
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
-            <li id="todos" class="nav-item">
-                <a class="nav-link" href="/todos">
-                    <i class="fas fa-list-alt"></i>
-                    Todos
-                </a>
-            </li>
             <li id="about" class="nav-item">
                 <a class="nav-link" href="/about">
                     <i class="fas fa-life-ring"></i>
@@ -46,14 +35,17 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                     data-toggle="dropdown" aria-label="User" aria-haspopup="true" aria-expanded="false">
+                    {{#if loggedIn}}
                     <i class="fas fa-user"></i>
+                    {{else}}
+                    <i class="fas fa-user-lock"></i>
+                    {{/if}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     {{#if loggedIn}}
-                    <a class="dropdown-item" href="/users/logout">Log out</a>
+                    <a class="dropdown-item" href="/logout">Log out</a>
                     {{else}}
-                    <a class="dropdown-item" href="/users/login">Log in</a>
-                    <a class="dropdown-item" href="/users/signup">Sign up</a>
+                    <a class="dropdown-item" href="/login">Log in</a>
                     {{/if}}
                 </div>
             </li>

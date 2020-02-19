@@ -191,4 +191,5 @@ Fontawesome is installed to use SVG icons together with jQuery. This will [enabl
 
 ## 7. Present simplifications and future improvements
 
-_Todo..._
+- Remove jQuery dependency
+- ...
